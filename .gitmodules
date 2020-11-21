@@ -1,0 +1,3 @@
+[submodule "datafusion2d"]
+	path = datafusion2d
+	url = https://github.com/imphys/smlm_datafusion2d
