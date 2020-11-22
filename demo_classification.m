@@ -1,7 +1,28 @@
-%% 
-This code ...
-
-
+% This code loads a dataset from the '/data' directory 
+% which should be a cell array of structures called 
+% subParticles with localizations in the 'point' field 
+% [x,y] and SQUARED uncertainties in 'sigma' field: 
+% subParticles{1}.points  -> localization data (x,y) in camera pixel units
+% subParticles{1}.sigma   -> localization uncertainties (sigma) in SQUARED pixel units
+% 
+% The following code will load the data from file and 
+% then performs the 4 (or 5) steps of the classification 
+% algorithm. Different example datasets are provided, 
+% both experimental as simulated data. You only need to 
+% provide the 'dataset' name, and the values for K (and 
+% optionally C)
+%
+% The code makes use of the parallel computing toolbox 
+% to distribute the load over different workers. 
+% 
+% (C) Copyright 2017               Quantitative Imaging Group
+%     All rights reserved          Faculty of Applied Physics
+%                                  Delft University of Technology
+%                                  Lorentzweg 1
+%                                  2628 CJ Delft
+%                                  The Netherlands
+%
+% Teun Huijben, 2020
 %%  
 close all
 clear all
@@ -22,7 +43,7 @@ dataset = '200x_simulated_TUD_mirror';          %100 normal, 100 mirrored (80% D
 dataset = '456x_experimental_TUD_mirror';     %experimental dataset of which a few (~2%) are mirrored
 
 % -- choose number of particles --
-N = 40;     %length(subparticles)
+N = 200;     %length(subparticles)
 
 load(dataset)
 
@@ -53,27 +74,6 @@ all2all(subParticles, [outdir '/all2all_matrix'], scale);
 iters = 3;                                                                                                                                         %number of bootstrap iteration
 [superParticle, ~] = one2all(initAlignedParticles, iters, M1, outdir,scale);                                      %bootstrapping
  
-%% shortcut to skip all2all
-clc
-clear all
-
-outdir = 'output/20200511_K_200_dataset_100_FTUD_100_TUD_nph_1000_dol_80_r1_r1';
-load([outdir '/subParticles.mat'])
-N = 200; 
-scale = 0.03; 
-
-outdir = 'output/20200207_K_200_dataset_10_FTUD_190_FTUDMIR_nph_5000_dol_80_r1';
-load([outdir '/subParticles.mat'])
-N = 200; 
-scale = 0.03; 
-
-clear all
-outdir = 'output/20200517_K_456_dataset_tud_456particles_hand_r1';
-load([outdir '/subParticles.mat'])
-N = 456; 
-scale = 0.01; 
-
-
 %% STEP 2: Multi-dimensional scaling
 
 % load the similarity matrix and normalize with respect to number of localizations; 
@@ -107,7 +107,7 @@ figure, scatter3(mds(:,1),mds(:,2),mds(:,3),[],clus,'o','filled'), title 'Cluste
 %% STEP 4: Reconstruction per cluster
 
 iters = 2;      %number of bootstraps
-[~,classes] = reconstructPerClassFunction(subParticles,clusters,outdir,scale, iters);  
+[~,classes] = reconstructPerClassFunction(subParticles,clusters,outdir,scale,iters);  
 
 %% Visualize results
 close all
