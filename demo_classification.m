@@ -29,18 +29,14 @@ clear all
 clc
 
 % add the required directory to path
-addpath(genpath('datafusion2d_submodule'))
-addpath(genpath('NeededMatlabFunctionsForClassification'))
-
-%DIP image toolbox:
-addpath(genpath('dip'))
-dip_initialise
+addpath(genpath('datafusion2d'))
+addpath(genpath('matlab_functions'))
 
 %% LOAD DATASET
 % -- select data set ---
 dataset = '200x_simulated_TUD_flame';           %100 with flame, 100 without flame (80% DoL)
-dataset = '200x_simulated_TUD_mirror';          %100 normal, 100 mirrored (80% DoL)
-dataset = '456x_experimental_TUD_mirror';     %experimental dataset of which a few (~2%) are mirrored
+% dataset = '200x_simulated_TUD_mirror';          %100 normal, 100 mirrored (80% DoL)
+% dataset = '456x_experimental_TUD_mirror';     %experimental dataset of which a few (~2%) are mirrored
 
 % -- choose number of particles --
 N = 200;     %length(subparticles)
