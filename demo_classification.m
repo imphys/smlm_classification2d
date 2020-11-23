@@ -41,7 +41,7 @@ dataset = '200x_simulated_TUD_flame';           %100 with flame, 100 without fla
 % -- choose number of particles --
 N = 200;     %length(subparticles)
 
-load(dataset)
+load(['data/' dataset])
 
 outdir = 'output_test/100xdol100';
 if ~exist(outdir,'dir')
