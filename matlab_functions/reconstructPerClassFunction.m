@@ -1,4 +1,38 @@
-function [initAlignedParticles_class superParticle_class] = reconstructPerClassFunction(subParticles, clusters, outdir, scale, iter)
+% reconstructPerClassFunction   performs data fusion for a given set of particles
+%
+% SYNOPSIS:
+%   [initAlignedParticles_class superParticle_class] = reconstructPerClassFunction(subParticles, clusters, outdir, scale, iter)
+%
+% INPUT
+%   subParticles
+%       Cell arrays of particles with localization in the point field and
+%       squared uncertainties in the sigma field.
+%   clusters
+%       cell array, where each entry contains a vector with
+%   outdir
+%       Output directory where rows of all2all matrix are stored
+%   scale
+%       scale parameter for gmm registration
+%   iter
+%       number of bootstrapping iterations
+%
+% OUTPUT
+%   initAlignedParticles_class
+%       Cell array of particles in the orientation they have in the
+%       superParticle
+%   superParticle_class
+%       Merged cell array of all aligned particles 
+%
+% (C) Copyright 2017               Quantitative Imaging Group
+%     All rights reserved          Faculty of Applied Physics
+%                                  Delft University of Technology
+%                                  Lorentzweg 1
+%                                  2628 CJ Delft
+%                                  The Netherlands
+%
+% Teun Huijben, Dec 2020
+
+function [initAlignedParticles_class, superParticle_class] = reconstructPerClassFunction(subParticles, clusters, outdir, scale, iter)
 
 clear classResults 
 

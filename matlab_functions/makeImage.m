@@ -1,8 +1,34 @@
+% makeImage   create image from localization coordinates by binning the
+% localizations.
+%
+% SYNOPSIS:
+%   [Z] = makeImage(X, n, diameter)
+%
+% INPUT
+%   X
+%       Nx2 matrix containing the localization coordinates. The x-values in
+%       the first column and y-values in the second column
+%   n
+%       Number of pixels in the nxn output image
+%   diameter
+%       width of the image in pixel units (crop the localizations within
+%       this field-of-view)
+%
+% OUTPUT
+%   nxn matrix representing the image. Note: the localizations are
+%   deliberately not centered around zero, otherwise the EigenAnalysis does
+%   not work anymore, because then different classes are no longer alinged.
+%
+% (C) Copyright 2017               Quantitative Imaging Group
+%     All rights reserved          Faculty of Applied Physics
+%                                  Delft University of Technology
+%                                  Lorentzweg 1
+%                                  2628 CJ Delft
+%                                  The Netherlands
+%
+% Teun Huijben, Dec 2020
+
 function [Z] = makeImage(X, n, diameter)
-    
-       %DO NOT SUBSTRACT THE MEAN! otherwise the eigenvector procedure
-       %fails, because different structures get mis-aligned when they are
-       %centered
        
     % extract the ROI
     ROIradius = 0.5*diameter;

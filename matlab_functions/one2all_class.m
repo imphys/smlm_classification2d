@@ -3,7 +3,7 @@
 % of particles
 %
 %   SYNOPSIS:
-%       [ superParticle, parameter ] = one2all(Particles, iter, oldM, scale)
+%       [superParticle, MT, parameter] = one2all(Particles, iter, oldM, scale)
 %
 %   Input: 
 %       Particles: Cell array of particles of size 1xN
@@ -19,10 +19,11 @@
 %       superParticle
 %
 %   NOTE:
-%       First, the function concatenates all the particles as they are.
-%       Then, each particle is extracted from the stack and registered to
-%       the rest. This is done until all particles are registered to the
-%       rest. Once done, the whole process is iterated iter times.
+%       This function is essentially equivalent to 'one2allm, but without 
+%       saving the outputFirst, the function concatenates all the particles 
+%       as they are. Then, each particle is extracted from the stack and 
+%       registered to the rest. This is done until all particles are 
+%       registered to the rest. Once done, the whole process is iterated iter times.
 
 % (C) Copyright 2017                    QI Group
 %     All rights reserved               Faculty of Applied Physics
@@ -33,13 +34,12 @@
 %
 % Teun Huijben, Dec 2020.
 
-function [ superParticle, MT,Particles] = one2all_class(Particles, iter, oldM, scale)
+function [superParticle, MT,Particles] = one2all_class(Particles, iter, oldM, scale)
 
     disp('Bootstapping is started  !');
     initParticle.points = [];
     initParticle.sigma = [];
     N = numel(Particles);
-   
     
     for i=1:N
         

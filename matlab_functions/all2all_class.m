@@ -1,20 +1,20 @@
 % all2all   performs all 2 all registration for a given set of particles
 %
 % SYNOPSIS:
-%   all2all(Particles, outdir)
+%   all2all(Particles, outdir, scale)
 %
 % INPUT
 %   Particles
-%       Cell arrays of particles with localization in the point field and 
-%       uncertainties in the sigma field.
+%       Cell arrays of particles with localization in the point field and
+%       squared uncertainties in the sigma field.
 %   outdir
 %       Output directory where rows of all2all matrix are stored
 %   scale
 %       scale parameter for gmm registration
 %
 % OUTPUT
-%   The function doesn't return any output but the results are stored in
-%   outdir. Each element of the all2all matrix includes registration
+%   The function is similar to its equivalent 'all2all.m, but returns the
+%   output instead of saving it. Each element of the all2all matrix includes registration
 %   parameters (result.parameter), cost function value (result.val) and the
 %   indicator pair (result.id) which stores (row, column) indices of all2all 
 %   matrix
@@ -26,7 +26,7 @@
 %                                  2628 CJ Delft
 %                                  The Netherlands
 %
-% Hamidreza Heydarian, 2017
+% Teun Huijben, Dec 2020
 
 function Matrix = all2all_class(Particles, scale)
 

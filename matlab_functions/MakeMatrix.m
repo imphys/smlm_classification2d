@@ -1,8 +1,36 @@
+% MakeMatrix   Construct the similarity matrix using the All2all result
+%
+% SYNOPSIS:
+%   [mat,mat_norm] = MakeMatrix(outdir,subParticles,K)
+%
+% INPUT
+%   subParticles
+%       Cell arrays of particles with localization in the point field and
+%       squared uncertainties in the sigma field.
+%   outdir
+%       Output directory where rows of all2all matrix are stored
+%   K
+%       number of subParticles
+%
+% OUTPUT
+%   mat
+%       similarity matrix
+%   mat_norm
+%       similarity matrix normalized to the number of localizations
+%
+% (C) Copyright 2017               Quantitative Imaging Group
+%     All rights reserved          Faculty of Applied Physics
+%                                  Delft University of Technology
+%                                  Lorentzweg 1
+%                                  2628 CJ Delft
+%                                  The Netherlands
+%
+% Teun Huijben, Dec 2020
+
 function [mat,mat_norm] = MakeMatrix(outdir,subParticles,K)
 
     %initialize
     mat = zeros(K,K);
-    numberClusters = 3; 
     mat_norm = zeros(K,K);
     numLocs = zeros(1,K); 
     filled = false(K,K);     

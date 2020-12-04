@@ -1,18 +1,18 @@
-%outlier_removal   This function performs Lie-algebraic averaging and
+%outlier_removal_class   This function performs Lie-algebraic averaging and
 % registration outlier removal and then performs the second round of
-% Lie-algebraic averaging
+% Lie-algebraic averaging, per class
 %
 %   SYNOPSIS:
-%       [Particles_step2, M_new] = outlier_removal(particles, all2all_dir, outdir)
+%       [initAlignedParticles, M_new] = outlier_removal_class(members,particles, Results)
 %
 %   Input: 
-%       particles: Cell array of particles of size 1xN
-%       all2all_dir: The directory in which rows of all2all registration
-%       matrix is stored
-%       outdir: Output directory where the results are stored
+%       particles
+%           Cell array of particles of size 1xN
+%       Results
+%           Structure outputted by all2all_class
 %
 %   Output:
-%       Particles_step2: the aligned particles after outlier removal
+%       initAlginedParticles: the aligned particles after outlier removal
 %       M_new: Transformation parameters (rotation+translation), a 4x4xN
 %       matrix where N is the number of particles.
 %
@@ -26,9 +26,9 @@
 %                                       2628 CJ Delft
 %                                       The Netherlands
 %
-% Hamidreza Heydarian, Oct 2017.
+% Teun Huijben, Dec 2017.
 
-function [initAlignedParticles, M_new] = outlier_removal_class(members,particles, Results)
+function [initAlignedParticles, M_new] = outlier_removal_class(particles, Results)
 
     disp('Lie-algebraic averaging started  !');
     path_matlab = genpath('Optimization');
