@@ -100,9 +100,9 @@ download it from: https://nvlabs.github.io/cub/index.html The easiest way to
 install CUB is to add the directory where you unpack CUB to your ``$CPATH`` 
 environment variable. Otherwise, you can also specify the path to the CUB directory by replacing 'cmake .' during installation with: 
 <pre>bash
-cmake -DCUB_ROOT_DIR=<b>PATH</b>/cub-1.8.0 .
-<pre>
-Where PATH is replaced by your respective path towards the cub folder. 
+cmake -DCUB_ROOT_DIR=<b>PATH</b>/cub-<b>X</b> .
+</pre>
+Where **PATH** is replaced by your respective path towards the cub folder and **X** by the cub version, for example 1.8.0
 
 
 
