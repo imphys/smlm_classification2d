@@ -6,6 +6,8 @@ The main code is written in Matlab and the compute-intensive kernels have been w
 
 Please follow the instructions in the demo file (**demo_classification.m**) using the respective data in the data-folder. 
 
+
+# Installation:
 ## Cloning the code from GitHub
 
 Start by cloning the code from GitHub, by using the following command:
