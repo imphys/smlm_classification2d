@@ -136,8 +136,8 @@ of the GPU code remove the mex files from the MATLAB/all2all directory and reins
 
 
 For further questions feel free to create an issue on GitHub. You can also contact the authors:  
-[Hamidreza Heydarian](https://hrheydarian.github.io/) (<H.Heydarian@tudelft.nl>) and  
-[Teun Huijben](https://github.com/benvanwerkhoven) (<teunhuijben@hotmail.com>)  
+[Teun Huijben](https://orbit.dtu.dk/en/persons/teun-a-p-m-huijben) (<teunhuijben@hotmail.com>)  and
+[Hamidreza Heydarian](https://hrheydarian.github.io/) (<H.Heydarian@tudelft.nl>)
 [Bernd Rieger](http://homepage.tudelft.nl/z63s8/) (<b.rieger@tudelft.nl>)
 
 Note that some files have been reused and adapted from the following sources:  
@@ -193,5 +193,5 @@ nosetests -v
 If you find this code useful for your research, please cite
 
 ```
-{}}
+{}
 ```
