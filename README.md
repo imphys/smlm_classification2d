@@ -53,3 +53,147 @@ cmake -DUSE_GPU=OFF .
 make
 make install
 ```
+
+
+## Example Usage
+
+An example of how to use the code on experimental and simulated data is shown
+in the MATLAB script `demo_classification.m`. 
+
+## Dependencies
+
+### CMake
+
+CMake is used as the build system for compiling the code. Here is a quick way to install the latest version of CMake locally without the need for root access:  
+1. Run the following from your terminal and also add it to your ~/.bashrc file for future usage. 
+```bash
+export PATH=$HOME/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/lib/:$LD_LIBRARY_PATH
+```
+2. Head over to the [CMake downloads page](https://cmake.org/download/) and get the latest “Unix/Linux Source” \*.tar.gz file.  
+3. Run the following command sequentially (this can take a few minutes !):  
+```bash
+
+tar -xf cmake*.tar.gz
+cd cmake*
+./configure --prefix=$HOME
+make
+make install
+```  
+4. You should now have the new installation of cmake ready. Check the version by:  
+```bash
+cmake --version
+```
+
+### MATLAB
+
+The main code is written in Matlab, it's not possible to use the software without it.
+The DIPImage toolbox for MATLAB is required, please see http://www.diplib.org for installation instructions.
+
+### CUDA
+
+The GPU code requires a CUDA-capable GPU as well as the CUDA toolkit to be 
+installed. Please see Nvidia's website for installation fo the CUDA toolkit 
+(https://developer.nvidia.com/cuda-downloads).
+
+### CUB Library
+
+The GPU code currently has one dependency, which is the CUB library. You can 
+download it from: https://nvlabs.github.io/cub/index.html The easiest way to 
+install CUB is to add the directory where you unpack CUB to your ``$CPATH`` 
+environment variable.
+
+
+## Troubleshooting
+
+### Operation System
+
+This code has been developed for a Linux enviroment.
+We have yet to test it on OSX and Windows, but the CMake build system should support compilation on these platforms.
+If you run into issues using the software on Windows or Mac please create an issue on GitHub or contact the authors.
+
+### CUB library or <cub/cub.cuh> not found
+
+The GPU code has only one external dependency, which is the CUB library. 
+cmake will try to find and locate the CUB library on your system. If that fails it will
+attempt to download the library directly. If that fails, you could install the library manually.
+
+You can download CUB from: https://nvlabs.github.io/cub/index.html. The easiest 
+way to install CUB is to add the top-level directory of where you've 
+unpacked the CUB source codes to your ``$CPATH`` environment variable. For 
+example, if you've unzipped the CUB sources into a directory called 
+``/home/username/cub-version.number``, you can use 
+``export CPATH=$CPATH:/home/username/cub-version.number/:`` to install CUB. In this way the 
+nvcc compiler is able to find the CUB headers.
+
+### Program tries to run GPU code when no GPU is present
+
+Note that the mex files for the GPU code will be installed into the MATLAB/all2all directory.  
+Once the mex files for the GPU code have been produced, 
+the MATLAB code will prefer to use the GPU functions instead of the CPU 
+functions. If you have no GPU available but did compile the mex files for 
+the GPU code, you will get errors and MATLAB will exit. To disable the use 
+of the GPU code remove the mex files from the MATLAB/all2all directory and reinstall using ``cmake -DUSE_GPU=OFF .``.
+
+### Further questions
+
+For further questions feel free to create an issue on GitHub. You can also contact the authors:  
+[Teun Huijben] (<teunhuijben@hotmail.com>) and
+[Hamidreza Heydarian](https://hrheydarian.github.io/) (<H.Heydarian@tudelft.nl>) and  
+[Bernd Rieger](http://homepage.tudelft.nl/z63s8/) (<b.rieger@tudelft.nl>)
+
+Note that some files have been reused and adapted from the following sources:  
+GMM registration:  
+    https://github.com/bing-jian/gmmreg  
+    	[1] Jian, B. & Vemuri, B. C. Robust point set registration using Gaussian mixture models. IEEE PAMI 33, 16331645 (2011).  
+
+Lie-algebraic averaging:  
+    http://www.ee.iisc.ac.in/labs/cvl/research/rotaveraging/  
+    [2] Govindu, V. Lie-algebraic averaging for globally consistent motion estimation. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (2004).  
+    [3] Chatterjee, A. Geometric calibration and shape refinement for 3D reconstruction PhD thesis. Indian Institute of Science (2015).
+    
+l1-magic optimization toolbox:  
+    https://statweb.stanford.edu/~candes/l1magic/  
+    
+Natural-Order Filename Sort  
+    https://nl.mathworks.com/matlabcentral/fileexchange/47434-natural-order-filename-sort
+
+## Developer instructions
+
+The testing and tuning scripts for the GPU code have been written in Python, 
+using [Kernel Tuner](https://github.com/benvanwerkhoven/kernel_tuner). This 
+section provides information on how to setup a development environment. Note 
+that these steps are only needed if you are interested in modifying the CUDA 
+and C++ codes.
+
+### Python 3
+
+The tests for the GPU code and several of the C functions are written in 
+Python, to run these a Python 3 installation is required. The easiest way to 
+get this is using [Miniconda](https://conda.io/miniconda.html).
+
+On Linux systems one could type the following commands to download and 
+install Python 3 using Miniconda:
+```
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+```
+
+All the required Python packages can be installed using the following command,
+before you run it make sure that you have CUDA installed:
+```
+pip install -r requirements.txt
+```
+
+The tests can be run using ``nose``, for example by typing the following in 
+the top-level or test directory:
+```
+nosetests -v
+```
+## Reference
+
+If you find this code useful for your research, please cite
+
+```
+{}}
+```
