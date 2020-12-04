@@ -6,7 +6,15 @@ The main code is written in Matlab and the compute-intensive kernels have been w
 
 Please follow the instructions in the demo file (**demo_classification.m**) using the respective data in the data-folder. 
 
+## Cloning the code from GitHub
 
+Start by cloning the code from GitHub, by using the following command:
+
+<pre>
+git clone https://github.com/imphys/smlm_classification2d.git --recursive
+</pre>
+
+where the recursive tag is necessary to also download libraries that recursively connected, for example the smlm_datafusion2d library. 
 
 ## Installation on Linux
 
@@ -99,7 +107,7 @@ The GPU code currently has one dependency, which is the CUB library. You can
 download it from: https://nvlabs.github.io/cub/index.html The easiest way to 
 install CUB is to add the directory where you unpack CUB to your ``$CPATH`` 
 environment variable. Otherwise, you can also specify the path to the CUB directory by replacing 'cmake .' during installation with: 
-<pre>bash
+<pre>
 cmake -DCUB_ROOT_DIR=<b>PATH</b>/cub-<b>X</b> .
 </pre>
 Where **PATH** is replaced by your respective path towards the cub folder and **X** by the cub version, for example 1.8.0
