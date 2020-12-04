@@ -55,10 +55,7 @@ make install
 ```
 
 
-## Example Usage
 
-An example of how to use the code on experimental and simulated data is shown
-in the MATLAB script `demo_classification.m`. 
 
 ## Dependencies
 
@@ -137,9 +134,10 @@ of the GPU code remove the mex files from the MATLAB/all2all directory and reins
 
 ### Further questions
 
+
 For further questions feel free to create an issue on GitHub. You can also contact the authors:  
-[Teun Huijben] (<teunhuijben@hotmail.com>) and
 [Hamidreza Heydarian](https://hrheydarian.github.io/) (<H.Heydarian@tudelft.nl>) and  
+[Teun Huijben](https://github.com/benvanwerkhoven) (<teunhuijben@hotmail.com>)  
 [Bernd Rieger](http://homepage.tudelft.nl/z63s8/) (<b.rieger@tudelft.nl>)
 
 Note that some files have been reused and adapted from the following sources:  
