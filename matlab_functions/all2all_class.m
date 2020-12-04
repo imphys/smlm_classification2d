@@ -1,14 +1,12 @@
-% all2all   performs all 2 all registration for a given set of particles
+% all2all_class   performs all2all registration for a given set of particles
 %
 % SYNOPSIS:
-%   all2all(Particles, outdir, scale)
+%   all2all_class(Particles, scale)
 %
 % INPUT
 %   Particles
 %       Cell arrays of particles with localization in the point field and
 %       squared uncertainties in the sigma field.
-%   outdir
-%       Output directory where rows of all2all matrix are stored
 %   scale
 %       scale parameter for gmm registration
 %

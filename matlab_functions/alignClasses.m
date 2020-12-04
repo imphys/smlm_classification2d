@@ -20,12 +20,7 @@
 %   Output:
 %       superParticle_class: the resulting fused particle
 %
-%   NOTE:
-%       First, the function concatenates all the particles as they are.
-%       Then, each particle is extracted from the stack and registered to
-%       the rest. This is done until all particles are registered to the
-%       rest. Once done, the whole process is iterated iter times.
-
+%
 % (C) Copyright 2017                    QI Group
 %     All rights reserved               Faculty of Applied Physics
 %                                       Delft University of Technology

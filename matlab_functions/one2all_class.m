@@ -19,7 +19,7 @@
 %       superParticle
 %
 %   NOTE:
-%       This function is essentially equivalent to 'one2allm, but without 
+%       This function is essentially equivalent to 'one2all.m', but without 
 %       saving the outputFirst, the function concatenates all the particles 
 %       as they are. Then, each particle is extracted from the stack and 
 %       registered to the rest. This is done until all particles are 
@@ -34,7 +34,7 @@
 %
 % Teun Huijben, Dec 2020.
 
-function [superParticle, MT,Particles] = one2all_class(Particles, iter, oldM, scale)
+function [superParticle, MT, Particles] = one2all_class(Particles, iter, oldM, scale)
 
     disp('Bootstapping is started  !');
     initParticle.points = [];

@@ -10,13 +10,14 @@
 %           Cell array of particles of size 1xN
 %       Results
 %           Structure outputted by all2all_class
+%       members
+%           Cell array where each cell contains a vector with the indices
+%           of the images that belong to one class
 %
 %   Output:
 %       initAlginedParticles: the aligned particles after outlier removal
 %       M_new: Transformation parameters (rotation+translation), a 4x4xN
 %       matrix where N is the number of particles.
-%
-%   NOTE:
 %
 %
 % (C) Copyright 2017                    QI Group
@@ -33,19 +34,11 @@ function [initAlignedParticles, M_new] = outlier_removal_class(particles, Result
     disp('Lie-algebraic averaging started  !');
     path_matlab = genpath('Optimization');
     addpath(path_matlab)
-%     cvx_solver mosek;
-%     cvx_solver
 
     % initialization
     RM = zeros(4,4,1);
     I = zeros(2,1);
     iter = 1;   
-
-    % load all2all registration matrix rows from file
-%     allRows = dir(all2all_dir);
-%     allNames = {allRows(~[allRows.isdir]).name};
-%     allNames = natsortfiles(allNames);
-%     nRows = numel(allNames);
 
     % stack all relative motion parameteres in RM
     for j=1:size(Results,1)
