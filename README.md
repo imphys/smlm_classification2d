@@ -10,7 +10,7 @@ Please follow the instructions in the demo file (**demo_classification.m**) usin
 
 ## Installation on Linux
 
-Use the following commands to build the necessary libraries for this software:
+Use the following commands to build the necessary libraries for this software (after making sure all the depencies are present, see and of this page):
 
 ```bash
 
@@ -98,7 +98,12 @@ installed. Please see Nvidia's website for installation fo the CUDA toolkit
 The GPU code currently has one dependency, which is the CUB library. You can 
 download it from: https://nvlabs.github.io/cub/index.html The easiest way to 
 install CUB is to add the directory where you unpack CUB to your ``$CPATH`` 
-environment variable.
+environment variable. Otherwise, you can also specify the path to the CUB directory by replacing 'cmake .' during installation with: 
+```bash
+cmake -DCUB_ROOT_DIR=PATH/cub-1.8.0 
+```
+Where PATH is replaced by your respective path towards the cub folder. 
+
 
 
 ## Troubleshooting
