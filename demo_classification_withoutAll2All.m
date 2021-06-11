@@ -54,27 +54,6 @@ end
 save([outdir '/subParticles'], 'subParticles');
 
 
-%% STEP 1: all2all registration
-% % perform all2all registration and save results on disk (can take long for many particles)
-% scale = 0.01;   
-%                 % 0.01 for experimental TUD (in camera pixel units)
-%                 % 0.03 for simulated TUD
-%                 % 0.1 for NPC
-%                 % 0.03 or Digits data
-%                 % 0.15 for Letters data                
-%                 % Look at Online Methods for the description
-% 
-% %all2all registration
-% all2all(subParticles, [outdir '/all2all_matrix'], scale);           
-% 
-% %optional fusion of all particles (not necessary for classification)
-% [initAlignedParticles, M1] = outlier_removal(subParticles, [outdir '/all2all_matrix/'], outdir);        %Lie-algebraic averaging
-% iters = 3;                                                                                                                                         %number of bootstrap iteration
-% [superParticle, ~] = one2all(initAlignedParticles, iters, M1, outdir,scale);                                      %bootstrapping
-%  
-
-%% Without all2all registration
-
 %Assuming the all2all registration is already performed, we can load the
 %dissimilarity matrix into our newly generated output-folder:
 
