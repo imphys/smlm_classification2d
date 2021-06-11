@@ -41,13 +41,13 @@ dataset = '200x_simulated_TUD_flame';           %100 with flame, 100 without fla
 % -- choose number of particles --
 N = 200;     %length(subparticles)
 
-load(['data/' dataset])
+load(['data/' dataset '/subParticles.mat'])
 
-outdir = 'output_test/100xdol100';
+outdir = ['output/' dataset];
 if ~exist(outdir,'dir')
     mkdir(outdir);
 else
-    disp('ERROR: outdir exists')
+    disp('ERROR: outdir already exists')
 end    
 
 save([outdir '/subParticles'], 'subParticles');
