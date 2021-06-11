@@ -48,7 +48,7 @@ outdir = ['output/' dataset];
 if ~exist(outdir,'dir')
     mkdir(outdir);
 else
-    disp('ERROR: outdir already exists')
+    disp('Warning: outdir already exists')
 end    
 
 save([outdir '/subParticles'], 'subParticles');
