@@ -63,7 +63,7 @@ for c = 1:length(clusters)
         end
     end
 %     
-    [initAlignedParticles_class{c}, M1_class{c}] = outlier_removal_class(members{c},subParticles(members{c}),classResults{c});
+    [initAlignedParticles_class{c}, M1_class{c}] = outlier_removal_class(subParticles(members{c}),classResults{c});
     [superParticle_class{c},~] = one2all_class(initAlignedParticles_class{c},iter,M1_class{c},scale); 
 end
 
