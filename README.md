@@ -211,6 +211,6 @@ nosetests -v
 
 If you find this code useful for your research, please cite
 
-```
-Huijben, T.A., Heydarian, H., Auer, A. et al. Detecting structural heterogeneity in single-molecule localization microscopy data. Nat Commun 12, 3791 (2021). https://doi.org/10.1038/s41467-021-24106-8
-```
+
+Huijben, T.A.P.M., Heydarian, H. et al. Detecting structural heterogeneity in single-molecule localization microscopy data. Nat Commun 12, 3791 (2021). https://doi.org/10.1038/s41467-021-24106-8
+
