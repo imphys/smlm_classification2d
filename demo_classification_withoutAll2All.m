@@ -36,8 +36,8 @@ addpath(genpath('matlab_functions'))
 %% LOAD DATASET
 % -- select data set ---
 dataset = '200x_simulated_TUD_flame';           %100 with flame, 100 without flame (80% DoL)
-% dataset = '200x_simulated_TUD_mirror';          %100 normal, 100 mirrored (80% DoL)
-% dataset = '456x_experimental_TUD_mirror';     %experimental dataset of which a few (~2%) are mirrored
+% dataset = '200x_simulated_TUD_mirror';          %10 mirrored, 190 normal (80% DoL)
+% dataset = '456_experimental_TUD_mirror';     %experimental dataset of which a few (~2%) are mirrored
 
 % -- choose number of particles --
 N = 200;     %length(subparticles)
@@ -88,8 +88,8 @@ figure, scatter3(mds(:,1),mds(:,2),mds(:,3),'o','filled'), title 'Multidimension
 %% STEP3: k-means clustering
 
 % -- set number of classes --
-K = 4;          %set to 2 for both simulated TUD datasets, this will give the correct classes
-                    %set to 4 for experimental TUD dataset, and continue with STEP 5 using C=2
+K = 4;          %set K to 2 for the simulated TUD_flame dataset, this will give the correct classes
+                    %set K to 4 for the other two datasets, and continue with STEP 5 using C=2
 
 clus = kmeans(mds,K,'replicates',1000);
 clear clusters
